@@ -39,8 +39,26 @@ const MedicationForm: React.FC<MedicationFormProps> = ({ onMedicationAdded }) =>
       if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       }
+
+      // Prevent duplicate medication by checking local state (client-side)
+      const existingMeds: typeof medicationData[] = JSON.parse(localStorage.getItem('medications') || '[]');
+      const isDuplicate = existingMeds.some((med) =>
+        med.name.trim().toLowerCase() === medicationData.name.trim().toLowerCase() &&
+        med.dosage.trim().toLowerCase() === medicationData.dosage.trim().toLowerCase() &&
+        med.frequency === medicationData.frequency &&
+        med.time === medicationData.time &&
+        med.startDate === medicationData.startDate
+      );
+      if (isDuplicate) {
+        setError('Medicine already added. You cannot add the same medicine twice.');
+        setIsLoading(false);
+        return;
+      }
       
       await axios.post('/api/medications', medicationData);
+      // Save to localStorage for duplicate check
+      existingMeds.push(medicationData);
+      localStorage.setItem('medications', JSON.stringify(existingMeds));
       
       setMedicationData({
         name: '',

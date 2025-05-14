@@ -105,25 +105,6 @@ const Dashboard: React.FC = () => {
                 )}
               </nav>
             </div>
-            
-            {/* Quick Stats */}
-            <div className="mt-6 bg-white rounded-lg shadow-md p-4">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Stats</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Active Medications</span>
-                  <span className="text-sm font-medium text-gray-900">4</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Upcoming Appointments</span>
-                  <span className="text-sm font-medium text-gray-900">2</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Medication Adherence</span>
-                  <span className="text-sm font-medium text-green-600">95%</span>
-                </div>
-              </div>
-            </div>
           </div>
           
           {/* Main Content */}
@@ -198,15 +179,6 @@ const Dashboard: React.FC = () => {
                       />
                     </div>
                   </div>
-                </div>
-                
-                <div className="mt-8">
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                  >
-                    Edit Profile
-                  </button>
                 </div>
               </div>
             )}
